@@ -97,7 +97,7 @@ export default function Checkout() {
             <ul>
               {items.map(item => (
                 <li key={item.id}>
-                  {item.title} × {item.quantity} — $
+                  {item.title}  &times; {item.quantity} — $
                   {(item.price * item.quantity).toFixed(2)}
                 </li>
               ))}
