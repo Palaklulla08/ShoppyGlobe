@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Loader from './utils/Loader';
 
-function App() {
-  const [count, setCount] = useState(0)
+// Lazy load pages/components to enable code splitting
+const Home = lazy(() => import('./pages/Home'));
+const ProductDetail = lazy(() => import('./components/ProductDetail'));
+const CartPage = lazy(() => import('./pages/CartPage'));
+const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
+const NotFound = lazy(() => import('./components/NotFound'));
 
+export default function App() {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* Header is displayed on all pages */}
+      <Header />
+
+      {/* Suspense handles fallback UI while lazy-loaded components are being fetched */}
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          {/* Home page */}
+          <Route path="/" element={<Home />} />
+
+          {/* Product detail page (dynamic ID from URL) */}
+          <Route path="/product/:id" element={<ProductDetail />} />
+
+          {/* Cart page */}
+          <Route path="/cart" element={<CartPage />} />
+
+          {/* Checkout page */}
+          <Route path="/checkout" element={<CheckoutPage />} />
+
+          {/* 404 Not Found page for unmatched routes */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
-  )
+  );
 }
 
-export default App
