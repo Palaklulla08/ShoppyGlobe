@@ -53,3 +53,5 @@ store
 
 aditional utils such as:
 loader for lazy loading
+
+git repo link :https://github.com/Palaklulla08/ShoppyGlobe.git
