@@ -31,3 +31,25 @@ for runing the project steps are :
   ➜  Local:   http://localhost:5174/ similar to this local host appears 
 4) copy the url run in the browser ..
 --------
+
+The project is build by different components such as 
+cart
+cartItem
+checkout
+header
+notfound
+productdetail
+productItem
+productlist
+
+used custom hooks such as:
+use fetch productdetail
+use fetch products
+
+used redux for creating store and its slices:
+cartslice
+productslice
+store
+
+aditional utils such as:
+loader for lazy loading
