@@ -23,7 +23,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
 
           {/* Product detail page (dynamic ID from URL) */}
-          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
 
           {/* Cart page */}
           <Route path="/cart" element={<CartPage />} />

@@ -26,11 +26,11 @@ export default function useFetchProducts() {
     setLoading(true);
 
     // Fetch products from the dummyjson API
-    axios.get('https://dummyjson.com/products')
+    axios.get(`http://localhost:8000/api/products`)
       .then(res => {
         if (mounted) {
           // Save products in state; default to empty array if undefined
-          setProducts(res.data.products || []);
+          setProducts(res.data || []);
         }
       })
       .catch(err => {

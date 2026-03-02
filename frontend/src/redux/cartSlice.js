@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Initial state for the cart
 // 'items' is an array of cart items, each item has:
-// { id, title, price, thumbnail, quantity }
+// { id, title, price, image, quantity }
 const initialState = {
   items: []
 };
@@ -16,7 +16,7 @@ const cartSlice = createSlice({
     // Add a product to the cart
     addToCart(state, action) {
       const p = action.payload; // Product object passed from component
-      const existing = state.items.find(i => i.id === p.id); // Check if product already exists
+      const existing = state.items.find(i => i.id === p._id); // Check if product already exists
 
       if (existing) {
         // If product exists, increment its quantity by 1
@@ -24,10 +24,10 @@ const cartSlice = createSlice({
       } else {
         // Otherwise, add new product with quantity 1
         state.items.push({
-          id: p.id,
+          id: p._id,
           title: p.title,
           price: p.price,
-          thumbnail: p.thumbnail,
+          image: p.image,
           quantity: 1
         });
       }

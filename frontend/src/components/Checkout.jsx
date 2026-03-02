@@ -96,7 +96,7 @@ export default function Checkout() {
             {/* List all items with quantity and subtotal */}
             <ul>
               {items.map(item => (
-                <li key={item.id}>
+                <li key={item._id || item.id}>
                   {item.title}  &times; {item.quantity} — $
                   {(item.price * item.quantity).toFixed(2)}
                 </li>

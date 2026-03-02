@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useEffect}from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import useFetchProducts from '../hooks/useFetchProducts';
 import ProductItem from './ProductItem';
@@ -11,13 +11,13 @@ export default function ProductList() {
   const searchTerm = useSelector(s => s.products.searchTerm || '');
 
   // Store products in Redux when fetched
-  React.useEffect(() => {
+  useEffect(() => {
     if (products.length) dispatch(setProducts(products));
   }, [products, dispatch]);
-
+   console.log(products)
   // Filter products by search term
   const filtered = products.filter(p =>
-    p.title.toLowerCase().includes(searchTerm.toLowerCase())
+    (p.name || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Loading state
@@ -42,7 +42,7 @@ export default function ProductList() {
   return (
     <section className="product-list">
       {filtered.length > 0 ? (
-        filtered.map(p => <ProductItem key={p.id} product={p} />)
+        filtered.map(p => <ProductItem key={p._id} product={p} />)
       ) : (
         <div className="center" style={{ padding: '20px', color: '#6b7280' }}>
           No products found for "{searchTerm}"

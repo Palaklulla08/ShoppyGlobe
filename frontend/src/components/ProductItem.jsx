@@ -19,10 +19,10 @@ export default function ProductItem({ product }) {
   return (
     <article className="product-card">
       {/* Clicking the image takes user to that product's detail page */}
-      <Link to={`/product/${product.id}`} className="product-img-wrap">
+      <Link to={`/products/${product._id}`} className="product-img-wrap">
         {/* "loading='lazy'" loads images only when needed -> improves performance */}
         <img 
-          src={product.thumbnail} 
+          src={product.image} 
           alt={product.title} 
           loading="lazy" 
         />
@@ -41,7 +41,7 @@ export default function ProductItem({ product }) {
         <div className="product-meta">
           {/* Price formatted to 2 decimal places */}
           <div className="price">
-            ${product.price.toFixed(2)}
+            ₹{product.price?.toLocaleString("en-IN")}
           </div>
 
           {/* Product Rating shown with a star icon */}
@@ -62,7 +62,7 @@ export default function ProductItem({ product }) {
 
           {/* Link to product detail page */}
           <Link 
-            to={`/product/${product.id}`} 
+            to={`/product/${product._id}`} 
             className="link-btn"
           >
             Details

@@ -34,7 +34,7 @@ export default function Cart() {
             </div>
           ) : (
             // Otherwise, render each cart item using CartItem component
-            items.map(item => <CartItem key={item.id} item={item} />)
+            items.map(item => <CartItem key={item._id || item.id || index}  item={item} />)
           )}
         </section>
 

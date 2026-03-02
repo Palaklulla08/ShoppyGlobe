@@ -11,7 +11,7 @@ export default function CartItem({ item }){
       {/* Product image */}
       <img 
         className="cart-item-img" 
-        src={item.thumbnail} 
+        src={item.image} 
         alt={item.title} 
         loading="lazy"  // Optimizes image loading
       />
@@ -28,7 +28,7 @@ export default function CartItem({ item }){
         {/* Decrease quantity button */}
         <button 
           className="qty-btn" 
-          onClick={() => dispatch(decrementQty(item.id))}
+          onClick={() => dispatch(decrementQty(item._id))}
         >
           −
         </button>
@@ -42,14 +42,14 @@ export default function CartItem({ item }){
           onChange={(e) => {
             const val = Number(e.target.value || 1);
             // Ensure value is at least 1 before dispatching update
-            dispatch(updateQuantity({ id: item.id, quantity: val >= 1 ? val : 1 }));
+            dispatch(updateQuantity({ id: item._id, quantity: val >= 1 ? val : 1 }));
           }}
         />
 
         {/* Increase quantity button */}
         <button 
           className="qty-btn" 
-          onClick={() => dispatch(incrementQty(item.id))}
+          onClick={() => dispatch(incrementQty(item._id))}
         >
           +
         </button>
@@ -64,7 +64,7 @@ export default function CartItem({ item }){
       <button 
         className="delete-btn" 
         title="Remove" 
-        onClick={() => dispatch(removeFromCart(item.id))}
+        onClick={() => dispatch(removeFromCart(item._id))}
       >
         🗑
       </button>

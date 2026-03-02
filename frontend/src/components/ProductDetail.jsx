@@ -39,7 +39,7 @@ export default function ProductDetail() {
         {/* Product Image Section */}
         <img
           className="detail-image"
-          src={product.thumbnail}      // Image URL from API
+          src={product.image}      // Image URL from API
           alt={product.title}          // Accessible description
         />
 
