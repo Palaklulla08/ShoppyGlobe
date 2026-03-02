@@ -24,7 +24,7 @@ export default function useFetchProductDetail(id) {
     let mounted = true;
 
     // Fetch product data from dummyjson API
-    axios.get(`http://localhost:8000/api/products/${id}`)
+    axios.get(`https://shoppyglobe-2-40nc.onrender.com/api/products/${id}`)
       .then(res => {
         if (mounted) {
           // Save product data in state if component is still mounted

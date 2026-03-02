@@ -26,7 +26,7 @@ export default function useFetchProducts() {
     setLoading(true);
 
     // Fetch products from the dummyjson API
-    axios.get(`http://localhost:8000/api/products`)
+    axios.get(`https://shoppyglobe-2-40nc.onrender.com/api/products`)
       .then(res => {
         if (mounted) {
           // Save products in state; default to empty array if undefined
